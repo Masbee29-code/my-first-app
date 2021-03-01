@@ -8,6 +8,8 @@ import { setUncaughtExceptionCaptureCallback } from 'process';
 })
 export class ServersComponent implements OnInit {
   allowNewServer: boolean = false;
+  serverCreationStatus: String = 'No server was created!';
+  serverName = 'Testserver';
 
   constructor() {
     setTimeout(() => {
@@ -16,6 +18,14 @@ export class ServersComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  onCreateServer() {
+    this.serverCreationStatus = 'Server was created! Name is ' + this.serverName;
+  }
+
+  onUpdateServerName(event: Event) {
+    this.serverName = (<HTMLInputElement>event.target).value;
   }
 
 }
